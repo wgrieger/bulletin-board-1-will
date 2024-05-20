@@ -74,9 +74,3 @@ Expired posts
 
 <!--testing area-->
 
-<%@today.class%>
-
-<%=x=Post.joins(:board).where("posts.expires_on >?", Date.today)%>
-<div>
-</div>
-<%=x.where(:board_id=>@the_board)%>
