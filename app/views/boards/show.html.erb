@@ -29,5 +29,51 @@
 <hr>
 <!--Enter Active and Expired Posts Lists-->
 <h2>
+Active posts
+</h2>
+
+<table border="1px">
+<th>Title</th>
+<th>Body</th>
+<th>Posted on</th>
+<th>Expires on</th>
+
+<%@the_posts_current.each do |table|%>
+<tr>
+  <td><%=table.title%></td>
+  <td><%=table.body%></td>
+  <td><%=table.created_at%></td>
+  <td><%=table.expires_on%></td>
+</tr>
+<%end%>
+</table>
+
+
+<h2>
+Expired posts
+</h2>
+
+<table border="1px">
+<th>Title</th>
+<th>Body</th>
+<th>Posted on</th>
+<th>Expired on</th>
+
+<%@the_posts_expired.each do |table|%>
+<tr>
+  <td><%=table.title%></td>
+  <td><%=table.body%></td>
+  <td><%=table.created_at%></td>
+  <td><%=table.expires_on%></td>
+</tr>
+<%end%>
+
+</table>
 
 <hr>
+
+<!--testing area-->
+
+<%=@today.class%>
+<%=@the_board.posts%>
+<%=Boards.joins(:posts).where("posts.expires_on > Date.today")%>
